@@ -34,37 +34,6 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Generate Starfield
-function createStars() {
-    const starsContainer = document.createElement('div');
-    starsContainer.className = 'stars';
-    document.body.insertBefore(starsContainer, document.body.firstChild);
-    
-    const starCount = 150;
-    
-    for (let i = 0; i < starCount; i++) {
-        const star = document.createElement('div');
-        star.className = 'star';
-        
-        const size = Math.random() * 2 + 1;
-        const x = Math.random() * 100;
-        const y = Math.random() * 100;
-        const duration = Math.random() * 3 + 2;
-        const opacity = Math.random() * 0.5 + 0.3;
-        
-        star.style.cssText = `
-            width: ${size}px;
-            height: ${size}px;
-            left: ${x}%;
-            top: ${y}%;
-            --duration: ${duration}s;
-            --opacity: ${opacity};
-        `;
-        
-        starsContainer.appendChild(star);
-    }
-}
-
 // Intersection Observer for section animations
 const observerOptions = {
     threshold: 0.1,
@@ -97,10 +66,10 @@ document.querySelectorAll('section').forEach(section => {
 
 // Typing Animation
 const typingTexts = [
-    'Electronics & Communication Engineer',
-    'Embedded Systems Developer',
-    'IoT Enthusiast',
-    'Web Developer',
+    'Full Stack Developer',
+    'React & Node.js Expert',
+    'Solution Architect',
+    'Clean Code Enthusiast',
     'Problem Solver'
 ];
 
@@ -138,30 +107,125 @@ if (typingElement) {
     typeText();
 }
 
-// Scroll progress indicator
-window.addEventListener('scroll', () => {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercentage = (scrollTop / scrollHeight) * 100;
-    
-    let progressBar = document.querySelector('.scroll-progress');
-    if (!progressBar) {
-        progressBar = document.createElement('div');
-        progressBar.className = 'scroll-progress';
-        progressBar.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-color), var(--nebula-pink), var(--accent-cyan));
-            z-index: 1001;
-            transition: width 0.1s ease;
-        `;
-        document.body.appendChild(progressBar);
+// Dynamic year in footer
+document.addEventListener('DOMContentLoaded', () => {
+    const yearElement = document.querySelector('.footer p');
+    if (yearElement) {
+        const currentYear = new Date().getFullYear();
+        yearElement.innerHTML = `© ${currentYear} Kondapalli Bhanu Prakash`;
     }
-    progressBar.style.width = scrollPercentage + '%';
 });
+
+console.log('Portfolio loaded successfully!');// Mobile Navigation Toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
+
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        hamburger.classList.remove('active');
+    });
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+
+// Navbar scroll effect
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// createStars(); // Disabled for modern tech theme
+
+// Intersection Observer for section animations
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            
+            const children = entry.target.querySelectorAll('.about-card, .info-item, .skill-category, .project-card, .education-item, .certification-card, .activity-card, .contact-item');
+            children.forEach((child, index) => {
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(30px)';
+                child.style.transition = 'all 0.5s ease';
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                    child.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        }
+    });
+}, observerOptions);
+
+document.querySelectorAll('section').forEach(section => {
+    section.classList.add('animate');
+    sectionObserver.observe(section);
+});
+
+// Typing Animation
+const typingTexts = [
+    'Full Stack Developer',
+    'React & Node.js Expert',
+    'Solution Architect',
+    'Clean Code Enthusiast',
+    'Problem Solver'
+];
+
+let textIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingElement = document.querySelector('.typing-text');
+
+function typeText() {
+    const currentText = typingTexts[textIndex];
+    
+    if (isDeleting) {
+        typingElement.textContent = currentText.substring(0, charIndex - 1);
+        charIndex--;
+    } else {
+        typingElement.textContent = currentText.substring(0, charIndex + 1);
+        charIndex++;
+    }
+    
+    let typeSpeed = isDeleting ? 50 : 100;
+    
+    if (!isDeleting && charIndex === currentText.length) {
+        typeSpeed = 2000;
+        isDeleting = true;
+    } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % typingTexts.length;
+        typeSpeed = 500;
+    }
+    
+    setTimeout(typeText, typeSpeed);
+}
+
+if (typingElement) {
+    typeText();
+}
 
 // Dynamic year in footer
 document.addEventListener('DOMContentLoaded', () => {
@@ -170,12 +234,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentYear = new Date().getFullYear();
         yearElement.innerHTML = `✨ Built with passion | © ${currentYear} Kondapalli Bhanu Prakash`;
     }
-    
-    createStars();
 });
 
-console.log('%c🚀 Portfolio loaded successfully!', 'color: #6366f1; font-size: 14px;');
-console.log('%c✨ Dark Space Theme', 'color: #22d3ee; font-size: 12px;');
+console.log('%c🚀 Portfolio loaded successfully!', 'color: #ffffff; font-size: 14px;');
 
 // Navbar background change on scroll with blur
 window.addEventListener('scroll', () => {
@@ -297,7 +358,7 @@ function createParticles() {
 }
 
 // Initialize particles
-createParticles();
+// createParticles(); // Disabled for modern tech theme
 
 // Scroll progress indicator
 window.addEventListener('scroll', () => {
