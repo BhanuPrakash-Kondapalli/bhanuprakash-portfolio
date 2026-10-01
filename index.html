@@ -1,377 +1,505 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kondapalli Bhanu Prakash - Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css?v=2.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Bhanu Prakash | Data Analyst</title>
+
+  <meta name="description"
+    content="Bhanu Prakash - Aspiring Data Analyst skilled in Python, SQL, Excel and Power BI.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1120;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    /* NAVBAR */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(11, 17, 32, 0.95);
+      border-bottom: 1px solid #1f2937;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav-container {
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      color: #60a5fa;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #d1d5db;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #60a5fa;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #60a5fa;
+    }
+
+    .hero h2 {
+      font-size: 27px;
+      color: #9ca3af;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      color: #9ca3af;
+      max-width: 650px;
+      font-size: 17px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 23px;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s;
+      border: 1px solid #60a5fa;
+    }
+
+    .primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .secondary {
+      color: #60a5fa;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .profile-box {
+      text-align: center;
+    }
+
+    .profile-box img {
+      width: 280px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #2563eb;
+      box-shadow: 0 0 40px rgba(37, 99, 235, 0.25);
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: #60a5fa;
+    }
+
+    .about-text {
+      max-width: 850px;
+      margin: auto;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 17px;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .skill-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+      transition: 0.3s;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: #2563eb;
+    }
+
+    .skill-card h3 {
+      color: #60a5fa;
+      margin-bottom: 8px;
+    }
+
+    .skill-card p {
+      color: #9ca3af;
+      font-size: 14px;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .project-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      padding: 30px;
+      transition: 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: #2563eb;
+    }
+
+    .project-card h3 {
+      color: #60a5fa;
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+      color: #9ca3af;
+      margin-bottom: 15px;
+    }
+
+    .tech {
+      color: #dbeafe;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    /* EDUCATION */
+    .education-card {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .education-card h3 {
+      color: #60a5fa;
+      font-size: 23px;
+    }
+
+    .education-card p {
+      color: #9ca3af;
+      margin-top: 8px;
+    }
+
+    /* CERTIFICATIONS */
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .cert-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 28px;
+      border-radius: 12px;
+    }
+
+    .cert-card h3 {
+      color: #60a5fa;
+      margin-bottom: 8px;
+    }
+
+    .cert-card p {
+      color: #9ca3af;
+    }
+
+    /* CONTACT */
+    .contact-box {
+      max-width: 700px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-box p {
+      color: #9ca3af;
+      margin-bottom: 25px;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .contact-links a {
+      padding: 12px 20px;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      color: #dbeafe;
+      transition: 0.3s;
+    }
+
+    .contact-links a:hover {
+      border-color: #60a5fa;
+      color: #60a5fa;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1f2937;
+      padding: 25px;
+      text-align: center;
+      color: #6b7280;
+      font-size: 14px;
+    }
+
+    /* MOBILE */
+    @media (max-width: 850px) {
+
+      .nav-links {
+        gap: 12px;
+        font-size: 13px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .buttons {
+        justify-content: center;
+      }
+
+      .profile-box {
+        order: -1;
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid,
+      .cert-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .nav-container {
+        height: auto;
+        padding: 15px 0;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero h2 {
+        font-size: 22px;
+      }
+
+      .profile-box img {
+        width: 210px;
+        height: 210px;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-title {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Modern Tech Background -->
-    <div class="tech-grid"></div>
-    <div class="glow-accent glow-1"></div>
-    <div class="glow-accent glow-2"></div>
 
-    <!-- Updated Navigation -->
-    <nav class="navbar creative-nav">
-        <div class="nav-container">
-            <a href="#home" class="logo">Bhanu<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active-link">( Home )</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#" class="btn-cv">Download CV</a>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <!-- NAVIGATION -->
+  <nav>
+    <div class="container nav-container">
+
+      <div class="logo">Bhanu.</div>
+
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+
+  <!-- HOME -->
+  <section class="hero" id="home">
+
+    <div class="container hero-content">
+
+      <div>
+
+        <p style="color:#60a5fa; font-weight:bold;">
+          HELLO, I'M
+        </p>
+
+        <h1>
+          Bhanu <span>Prakash.</span>
+        </h1>
+
+        <h2>
+          Aspiring Data Analyst
+        </h2>
+
+        <p>
+          I am building my career in Data Analytics by working with
+          Python, SQL, Excel and Power BI to clean, analyze and visualize
+          data and turn it into meaningful insights.
+        </p>
+
+        <div class="buttons">
+
+          <a href="#projects" class="btn primary">
+            View Projects
+          </a>
+
+          <a href="#contact" class="btn secondary">
+            Contact Me
+          </a>
+
         </div>
-    </nav>
 
-    <!-- Creative Hero Section -->
-    <section id="home" class="creative-hero">
-        <div class="creative-hero-container">
-            <!-- Left Side -->
-            <div class="hero-left">
-                <span class="greeting">Hy! I Am</span>
-                <h1 class="hero-name">Bhanu <br><span class="highlight-name">Prakash.</span></h1>
-                <div class="experience-badge">
-                    <span class="exp-number">2026</span>
-                    <div class="exp-text">EXPECTED<br>GRADUATION</div>
-                </div>
-            </div>
-
-            <!-- Center Image -->
-            <div class="hero-center">
-                <div class="profile-circle">
-                    <img src="bhanu.jpg" alt="Bhanu Prakash">
-                </div>
-                <div class="dashed-arrow">
-                    <svg width="250" height="150" viewBox="0 0 250 150" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <!-- Curved path from right (image) to left (name) -->
-                        <path d="M240 60C180 20 120 140 10 120" stroke="#4a5568" stroke-width="2" stroke-dasharray="8 8" />
-                        <!-- Arrowhead on the left side -->
-                        <path d="M15 110L5 122L18 130" stroke="#4a5568" stroke-width="2" />
-                    </svg>
-                </div>
-            </div>
-
-            <!-- Right Side -->
-            <div class="hero-right">
-                <p class="hero-quote">Engineering innovative solutions through<br>IoT, Embedded Systems, and Web Development.</p>
-                
+      </div>
 
 
-                <div class="creative-signature">
-                    <span class="sig-main">Full Stack</span>
-                    <span class="sig-sub">Developer.</span>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="profile-box">
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title"><span>About Me</span></h2>
-            <div class="about-content">
-                <div class="about-card">
-                    <h3>Career Objective</h3>
-                    <p>Aiming for a challenging position in a progressive organization where I can leverage my Electronics and Communication Engineering expertise, analytical thinking, and problem-solving skills to create innovative solutions, contribute to meaningful projects, and advance my professional growth.</p>
-                </div>
-                <div class="about-info">
-                    <div class="info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Guntur, Andhra Pradesh – 522212</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-phone"></i>
-                        <span>+91 95427 93340</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>bhanukondapalli3340@gmail.com</span>
-                    </div>
-                    <div class="info-item">
-                        <i class="fab fa-linkedin"></i>
-                        <span>linkedin.com/in/kondapalli-bhanu-prakash-a63375364</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Your existing photo -->
+        <img src="bhanu.jpg" alt="Bhanu Prakash">
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title"><span>Technical Skills</span></h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Programming Languages</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-python"></i>
-                            <span>Python</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Database Technologies</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-database"></i>
-                            <span>SQL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Web Technologies</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fab fa-html5"></i>
-                            <span>HTML</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-css3-alt"></i>
-                            <span>CSS</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Hardware Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-microchip"></i>
-                            <span>Arduino IDE</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-raspberry-pi"></i>
-                            <span>Raspberry Pi</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="skill-category">
-                    <h3>Technologies & Tools</h3>
-                    <div class="skill-items">
-                        <div class="skill-item">
-                            <i class="fas fa-code"></i>
-                            <span>VS Code</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fab fa-git-alt"></i>
-                            <span>Git</span>
-                        </div>
-                        <div class="skill-item">
-                            <i class="fas fa-calculator"></i>
-                            <span>MATLAB</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="soft-skills">
-                <h3>Soft Skills</h3>
-                <div class="soft-skills-grid">
-                    <div class="soft-skill-item">
-                        <i class="fas fa-lightbulb"></i>
-                        <span>Creative Thinking</span>
-                    </div>
-                    <div class="soft-skill-item">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Analytical Thinking</span>
-                    </div>
-                    <div class="soft-skill-item">
-                        <i class="fas fa-comments"></i>
-                        <span>Communication</span>
-                    </div>
-                    <div class="soft-skill-item">
-                        <i class="fas fa-users"></i>
-                        <span>Team Work & Collaboration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      </div>
 
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2 class="section-title"><span>Projects</span></h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-seedling"></i>
-                    </div>
-                    <h3>Smart Farming with IoT Soil Moisture Monitoring</h3>
-                    <p class="project-year">2024</p>
-                    <ul class="project-details">
-                        <li>Monitored real-time soil moisture levels using sensors</li>
-                        <li>Automated irrigation by controlling the water pump based on soil conditions</li>
-                        <li>Enabled farmers to track data remotely through cloud and mobile app</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Arduino</span>
-                        <span>Soil Moisture Sensor</span>
-                        <span>Wi-Fi Module</span>
-                        <span>ThingSpeak</span>
-                        <span>Embedded C</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-icon">
-                        <i class="fas fa-hand-pointer"></i>
-                    </div>
-                    <h3>Micro Hand Gesture Recognition using Deep Learning</h3>
-                    <p class="project-year">2024</p>
-                    <ul class="project-details">
-                        <li>Designed a system to recognize micro hand gestures using deep learning models</li>
-                        <li>Processed gesture data with image/video input for accurate classification</li>
-                        <li>Enabled touchless control applications in human–computer interaction</li>
-                    </ul>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>TensorFlow/Keras</span>
-                        <span>OpenCV</span>
-                        <span>CNN</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
-    <!-- Education Section -->
-    <section id="education" class="education">
-        <div class="container">
-            <h2 class="section-title"><span>Education</span></h2>
-            <div class="education-timeline">
-                <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="education-content">
-                        <h3>Bachelor of Technology in Electronics and Communication Engineering</h3>
-                        <p class="education-institute">Veltech University</p>
-                        <p class="education-year">2022 – 2026</p>
-                    </div>
-                </div>
-                <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-school"></i>
-                    </div>
-                    <div class="education-content">
-                        <h3>Intermediate (MPC)</h3>
-                        <p class="education-institute">Sri Chaitanya Junior College</p>
-                        <p class="education-year">2020 – 2022</p>
-                    </div>
-                </div>
-                <div class="education-item">
-                    <div class="education-icon">
-                        <i class="fas fa-book"></i>
-                    </div>
-                    <div class="education-content">
-                        <h3>SSC</h3>
-                        <p class="education-institute">St.Xavier's High School</p>
-                        <p class="education-year">2019 – 2020</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  </section>
 
-    <!-- Certifications Section -->
-    <section id="certifications" class="certifications">
-        <div class="container">
-            <h2 class="section-title"><span>Certifications</span></h2>
-            <div class="certifications-grid">
-                <div class="certification-card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>National Small Industries Corporation Ltd</h3>
-                    <p>2024</p>
-                </div>
-                <div class="certification-card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>CompTIA IT Fundamentals of Operating Systems</h3>
-                    <p>2025</p>
-                </div>
-                <div class="certification-card">
-                    <i class="fas fa-certificate"></i>
-                    <h3>AIML Intern at Micro Information Technology Services</h3>
-                    <p>2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Extra-Curricular Section -->
-    <section id="activities" class="activities">
-        <div class="container">
-            <h2 class="section-title"><span>Extra-Curricular</span></h2>
-            <div class="activities-grid">
-                <div class="activity-card">
-                    <i class="fas fa-palette"></i>
-                    <h3>Design Work</h3>
-                    <p>Designed posters, banners and digital content using Canva for cultural events</p>
-                </div>
-                <div class="activity-card">
-                    <i class="fas fa-video"></i>
-                    <h3>Video Editing</h3>
-                    <p>Edited photos and short videos for event promotions and college activities</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- ABOUT -->
+  <section id="about">
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title"><span>Get In Touch</span></h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <h3>Location</h3>
-                            <p>Guntur, Andhra Pradesh – 522212</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <h3>Phone</h3>
-                            <p>+91 95427 93340</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <h3>Email</h3>
-                            <p>bhanukondapalli3340@gmail.com</p>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
-                        <div>
-                            <h3>LinkedIn</h3>
-                            <p>kondapalli-bhanu-prakash-a63375364</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="container">
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p><span>&lt;/&gt;</span> Built with passion | © 2026 Kondapalli Bhanu Prakash</p>
-        </div>
-    </footer>
+      <h2 class="section-title">
+        About <span>Me</span>
+      </h2>
 
-    <script src="js/script.js"></script>
-</body>
-</html>
+      <div class="about-text">
+
+        <p>
+          I am a B.Tech graduate in Electronics and Communication
+          Engineering from Veltech University, Chennai.
+        </p>
+
+        <br>
+
+        <p>
+          I have developed a strong interest in Data Analytics and am
+          building practical skills in Python, SQL, Excel, Power BI,
+          data cleaning, data visualization and data analysis.
+        </p>
